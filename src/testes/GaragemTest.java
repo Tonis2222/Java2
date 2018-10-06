@@ -12,24 +12,14 @@ import modelo.Caminhao;
 import modelo.Carro;
 import modelo.Proprietario;
 import modelo.Reboque;
-import modelo.Veiculo;
 
-public class AutomovelTest {
+public class GaragemTest {
 
 	@Test
-	public void testaCarro() {
+	public void garagemTest() {
 
 		modelo.Proprietario proprietario = new Proprietario();
 		proprietario.setCpf("123.456.789-01");
-
-		modelo.Carro carro = new Carro(modelo.Combustivel.Flex);
-		carro.setAnoFabricacao(2018);
-		carro.setDataEmplacamento(Calendar.getInstance());
-		carro.setFabricante("Fiat");
-		carro.setPossuiArCondicionado(true);
-		carro.setPotencia(88);
-		carro.setTorque(11);
-		carro.setProprietario(proprietario);
 
 		modelo.Reboque reboque1 = new Reboque(8, (float) .75, 2010, "Scania");
 		modelo.Reboque reboque2 = new Reboque(6, (float) .45, 2007, "Scania");
@@ -49,18 +39,13 @@ public class AutomovelTest {
 		caminhao.setReboques(reboques);
 
 		List<modelo.Veiculo> veiculos = new ArrayList<modelo.Veiculo>();
-		veiculos.add(carro);
 		veiculos.add(caminhao);
 
 		proprietario.setVeiculos(veiculos);
-
-		System.out.println("CPF: " + proprietario.getCpf());
-		System.out.println("Total veiculos: " + proprietario.getVeiculos().size());
-		for (int i = 0; i < proprietario.getVeiculos().size(); i++) {
-			System.out.println("Tipo: " + proprietario.getVeiculos().get(i).imprimirTipo());
-		}
+		aplicacao.Garagem g = new aplicacao.Garagem();
+		g.addCaminhao(caminhao);
 		
-		assertTrue(proprietario.getVeiculos().size() == 2);
+		assertTrue(g.calcularTotalImposto() == (float) 1306.9199);
 
 	}
 

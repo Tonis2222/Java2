@@ -10,6 +10,14 @@ public class Caminhao extends Veiculo implements ITributavel {
 	private float capacidadeTanque;
 	private float peso;
 
+	public List<Reboque> getReboques() {
+		return reboques;
+	}
+
+	public void setReboques(List<Reboque> reboques) {
+		this.reboques = reboques;
+	}
+
 	@Override
 	public Combustivel getCombustivel() {
 		return Combustivel.Diesel;

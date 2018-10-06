@@ -4,8 +4,13 @@ import java.util.Vector;
 import modelo.Veiculo;;
 
 public class Garagem {
-	private static Vector<Veiculo> automoveis;
+	
+	private Vector<Veiculo> automoveis;
 
+	public Garagem(){
+		automoveis = new Vector<Veiculo>();		
+	}
+	
 	public Vector<Veiculo> getCaminhoes() {
 		Vector<Veiculo> retorno = new Vector<Veiculo>();
 
@@ -20,6 +25,10 @@ public class Garagem {
 
 	public void addCaminhao(modelo.Caminhao caminhao) {
 		automoveis.addElement(caminhao);
+	}
+	
+	public void addCarro(modelo.Carro carro) {
+		automoveis.addElement(carro);
 	}
 
 	public float calcularTotalImposto() {
